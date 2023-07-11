@@ -37,13 +37,13 @@ This repository is structured as described below. The CSV files are not provided
 		-README.md
 		- data
 			- process_data.py
-            		- disaster_categories.csv
+			- disaster_categories.csv
 			- disaster_messages.csv
 			- DisasterResponse.db
 		- models
-            		- train_classifier.py
-            		- classifier.pkl
-    		- app
+			- train_classifier.py
+			- classifier.pkl
+		- app
 			-templates
 				-go.html
 				-master.html
