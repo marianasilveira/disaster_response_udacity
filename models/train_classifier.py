@@ -50,7 +50,7 @@ def tokenize(text):
     # Intantiate lemmatizer
     lemmatizer = WordNetLemmatizer()
 
-    # Lemmatize
+    # Lemmatize 
     clean_tokens = []
     for tok in tokens:
         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
