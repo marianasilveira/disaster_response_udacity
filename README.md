@@ -33,7 +33,7 @@ This application classifies a text message using Random Forests, whose traning d
 
 This repository is structured as described below. The CSV files are not provided, but they can be downloaded [here](https://learn.udacity.com/nanodegrees/nd025/parts/cd0018/lessons/c5de7207-8fdb-4cd1-b700-b2d7ce292c26/concepts/c6d64c4f-5877-4eab-815b-e1c6495b0201).
 
-	- Root Directory
+	- disaster_response_udacity
 		-README.md
 		- data
 			- process_data.py
