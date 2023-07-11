@@ -26,6 +26,7 @@ Run the following commands in the project's root directory to set up your databa
 
 ## File Descriptions
 The application available here classifies a message in accordance to the proposed model, which was trained using Tweets related to different disasters. 
+
 	- ./data contains the etl pipeline code, and the CSV and DB files containing the data. Due to their sizes, the CSV files are not provided in this repository, but they can be downloaded [here](https://learn.udacity.com/nanodegrees/nd025/parts/cd0018/lessons/c5de7207-8fdb-4cd1-b700-b2d7ce292c26/concepts/c6d64c4f-5877-4eab-815b-e1c6495b0201).
 
 	- ./models contains the ml pipeline and the proposed model's pickle file.
