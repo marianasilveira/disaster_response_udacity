@@ -25,6 +25,15 @@ from sklearn.metrics import classification_report
 url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
 def load_data(database_filepath):
+    '''
+    Load data from SQLite database
+    Input:
+        - database_filepath - string - path to database
+    Returns:
+        - X - pandas series - messages
+        - Y - dataframe - categories
+        - category_names - list - category labels
+    '''
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table(database_filepath, con=engine)
     X = df['message']
@@ -33,6 +42,13 @@ def load_data(database_filepath):
     return X, Y, category_names
 
 def tokenize(text):
+    '''
+    Normalize, tokenize and lemmatize text
+    Input:
+        - text - string
+    Returns:
+        - clean_tokens - list - clean tokens
+    '''
     # Remove urls (if any)
     detected_urls = re.findall(url_regex, text)
     for url in detected_urls:
@@ -60,6 +76,11 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    Build machine learning pipeline
+    Returns:
+        - model - GridSearchCV pipeline - machine learning model
+    '''
     pipeline = Pipeline([
     ('vect', CountVectorizer(tokenizer=tokenize)),
     ('tfidf', TfidfTransformer()),
@@ -76,6 +97,14 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    Predict and evaluate machine learning model
+    Input:
+        - model - GridSearchCV pipeline - machine learning model
+        - X_test - pandas series - test data
+        - Y_test - dataframe - target
+        - category_names - list - category names 
+    '''
     Y_pred = model.predict(X_test)
 
     for i,category in enumerate(category_names):
@@ -86,7 +115,6 @@ def evaluate_model(model, X_test, Y_test, category_names):
     
     #print('Model best parameters:' + model.best_params_)
       
-
 
 def save_model(model, model_filepath):
     pickle.dump(model, open(model_filepath, 'wb'))
